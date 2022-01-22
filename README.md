@@ -8,6 +8,7 @@
 [![Stars](https://img.shields.io/github/stars/vedderb/bldc.svg)](https://github.com/vedderb/bldc/stargazers)
 [![Forks](https://img.shields.io/github/forks/vedderb/bldc.svg)](https://github.com/vedderb/bldc/network/members)
 
+This is a copy of veddb/bldc: https://github.com/vedderb/bldc, added ubox series files.
 An open source motor controller firmware.
 
 This is the source code for the VESC DC/BLDC/FOC controller. Read more at

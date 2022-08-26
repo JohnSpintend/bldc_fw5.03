@@ -109,8 +109,8 @@
 //#define HW_HEADER "hw_75_300.h"
 
 //ubox_v1v2_75v
-#define HW_SOURCE "hw_ubox_75_100.c"
-#define HW_HEADER "hw_ubox_75_100.h"
+//#define HW_SOURCE "hw_ubox_75_100.c"
+//#define HW_HEADER "hw_ubox_75_100.h"
 
 //#define HW_SOURCE "hw_mini4.c"
 //#define HW_HEADER "hw_mini4.h"
@@ -145,8 +145,8 @@
 //#define HW_HEADER "hw_100_250.h"
 
 //ubox_v2_100v
-//#define HW_SOURCE "hw_uboxv2_100_100.c"
-//#define HW_HEADER "hw_uboxv2_100_100.h"
+#define HW_SOURCE "hw_uboxv2_100_100.c"
+#define HW_HEADER "hw_uboxv2_100_100.h"
 
 //#define HW_SOURCE "hw_unity.c"
 //#define HW_HEADER "hw_unity.h"

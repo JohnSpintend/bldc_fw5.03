@@ -4,6 +4,7 @@ build
 .dep
 .project
 .cproject
-.settings/language.settings.xml
+.settings
+.metadata
 .DS_Store
 workspace.code-workspace

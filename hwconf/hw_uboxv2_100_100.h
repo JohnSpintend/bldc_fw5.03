@@ -21,18 +21,19 @@
 #define HW_UBOXV2_100_100_H_
 
 //#define UBOX_V2_100V_100D
-//#define UBOX_V2_100V_100D_EG3112
 //#define UBOX_V2_100V_250D
-
+//#define UBOX_SINGLE_100
+//#define UBOX_SINGLE_100_250
 
 #ifdef UBOX_V2_100V_100D
 	#define HW_NAME					"UBOX_V2_100_100"
-#elif defined UBOX_V2_100V_100D_EG3112
-	#define HW_NAME					"UBOX_V2_100_100_EG3112"
-	#define HW_DEAD_TIME_NSEC		（660.0）//(660.0-100)//EG的驱动，在1盎司的 MAG测试板上，无可观的差别，
-											//所以这里改回默认的死区，并且在脚本里面不编译这个子版本
+	#define CRUUENT_100A
 #elif defined UBOX_V2_100V_250D
 	#define HW_NAME					"UBOX_V2_100_250"
+#elif defined UBOX_SINGLE_100
+	#define HW_NAME					"UBOX_SINGLE_100"
+	#define CRUUENT_100A
+	#define MCCONF_L_MAX_VOLTAGE	90.0
 #endif
 
 // HW properties
@@ -254,7 +255,7 @@
 #define MCCONF_FOC_F_ZV					30000.0
 #endif
 
-#ifndef UBOX_V2_100V_100D
+#ifndef CRUUENT_100A
 	#ifndef MCCONF_L_MAX_ABS_CURRENT
 	#define MCCONF_L_MAX_ABS_CURRENT		400.0	// The maximum absolute current above which a fault is generated
 	#endif
@@ -283,7 +284,7 @@
 #endif
 
 
-#ifndef UBOX_V2_100V_100D
+#ifndef CRUUENT_100A
 	// Setting limits
 	#define HW_LIM_CURRENT			-300.0, 300.0
 	#define HW_LIM_CURRENT_IN		-300.0, 300.0
@@ -295,14 +296,25 @@
 	#define HW_LIM_TEMP_FET			-40.0, 110.0
 #else
 	// Setting limits
-	#define HW_LIM_CURRENT			-120.0, 120.0
-	#define HW_LIM_CURRENT_IN		-150.0, 150.0
-	#define HW_LIM_CURRENT_ABS		0.0, 140.0
-	#define HW_LIM_VIN				11.0, 97.0
-	#define HW_LIM_ERPM				-200e3, 200e3
-	#define HW_LIM_DUTY_MIN			0.0, 0.1
-	#define HW_LIM_DUTY_MAX			0.0, 0.99
-	#define HW_LIM_TEMP_FET			-40.0, 110.0
+	#ifdef UBOX_SINGLE_100
+		#define HW_LIM_CURRENT			-135.0, 135.0
+		#define HW_LIM_CURRENT_IN		-100.0, 100.0
+		#define HW_LIM_CURRENT_ABS		0.0, 180.0
+		#define HW_LIM_VIN				11.0, 93.0
+		#define HW_LIM_ERPM				-200e3, 200e3
+		#define HW_LIM_DUTY_MIN			0.0, 0.1
+		#define HW_LIM_DUTY_MAX			0.0, 0.99
+		#define HW_LIM_TEMP_FET			-40.0, 110.0
+	#else
+		#define HW_LIM_CURRENT			-120.0, 120.0
+		#define HW_LIM_CURRENT_IN		-150.0, 150.0
+		#define HW_LIM_CURRENT_ABS		0.0, 140.0
+		#define HW_LIM_VIN				11.0, 97.0
+		#define HW_LIM_ERPM				-200e3, 200e3
+		#define HW_LIM_DUTY_MIN			0.0, 0.1
+		#define HW_LIM_DUTY_MAX			0.0, 0.99
+		#define HW_LIM_TEMP_FET			-40.0, 110.0
+	#endif
 #endif
 
 // HW-specific functions

@@ -58,6 +58,7 @@ make -j16 build_args='-DHW_SOURCE=\"hw_ubox_75_100.c\" -DHW_HEADER=\"hw_ubox_75_
 cd $DIR
 cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_75_100_TYPEC_R2_3.3V_300A_FW5.3.bin
 
+
 ###### r2 single #########
 COPYDIR=ubox_single
 mkdir -p $COPYDIR
@@ -103,13 +104,19 @@ make -j16 build_args='-DHW_SOURCE=\"hw_ubox_75_100.c\" -DHW_HEADER=\"hw_ubox_75_
 cd $DIR
 cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_V2_75V_300A_FW5.3.bin
 
-
 # ubox v2 100A 80V limit
 cd $FWPATH
 touch conf_general.h
 make -j16 build_args='-DHW_SOURCE=\"hw_ubox_75_100.c\" -DHW_HEADER=\"hw_ubox_75_100.h\" -DUBOX_V2_75V100D_80VLIMIT' USE_VERBOSE_COMPILE=no
 cd $DIR
 cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_V2_75V_100A_FW5.3_80V_LIMIT.bin
+
+# ubox v2 300A 80V limit
+cd $FWPATH
+touch conf_general.h
+make -j16 build_args='-DHW_SOURCE=\"hw_ubox_75_100.c\" -DHW_HEADER=\"hw_ubox_75_100.h\" -DUBOX_V2_75V300D_80VLIMIT' USE_VERBOSE_COMPILE=no
+cd $DIR
+cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_V2_75V_300A_FW5.3_80V_LIMIT.bin
 
 # ubox v2 100A CURR_FILTER_OFF
 cd $FWPATH
@@ -131,19 +138,24 @@ make -j16 build_args='-DHW_SOURCE=\"hw_uboxv2_100_100.c\" -DHW_HEADER=\"hw_uboxv
 cd $DIR
 cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_V2_100V_100A_FW5.3.bin
 
-## ubox v2 100v 100A EG3112
-#cd $FWPATH
-#touch conf_general.h
-#make -j16 build_args='-DHW_SOURCE=\"hw_uboxv2_100_100.c\" -DHW_HEADER=\"hw_uboxv2_100_100.h\" -DUBOX_V2_100V_100D_EG3112' USE_VERBOSE_COMPILE=no
-#cd $DIR
-#cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_V2_100V_100A_FW5.3_EG3112.bin
-
 # ubox v2 100v 250A 
 cd $FWPATH
 touch conf_general.h
 make -j16 build_args='-DHW_SOURCE=\"hw_uboxv2_100_100.c\" -DHW_HEADER=\"hw_uboxv2_100_100.h\" -DUBOX_V2_100V_250D' USE_VERBOSE_COMPILE=no
 cd $DIR
 cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_V2_100V_250A_FW5.3.bin
+
+
+COPYDIR=Ubox_single_100V
+mkdir -p $COPYDIR
+rm -f $COPYDIR/*
+
+# ubox single 100v  
+cd $FWPATH
+touch conf_general.h
+make -j16 build_args='-DHW_SOURCE=\"hw_uboxv2_100_100.c\" -DHW_HEADER=\"hw_uboxv2_100_100.h\" -DUBOX_SINGLE_100' USE_VERBOSE_COMPILE=no
+cd $DIR
+cp $FWPATH/build/BLDC_4_ChibiOS.bin $COPYDIR/VESC_UBOX_SINGLE_100V_100A_FW5.3.bin
 
 #################### LUNA_BBSHD ########################
 
